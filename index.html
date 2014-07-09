@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Be The First</title>
+
+	<!-- Stylesheets -->
+	<link type="text/css" rel="stylesheet" href="styles/reset.css">
+	<link type="text/css" rel="stylesheet" href="styles/style.css"> 
+
+	<!-- JavaScript -->
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="search">
+			<form class="get-projects" onsubmit="return false;">
+				<input type="text" placeholder='Search by subject. E.g., "music"' name="tags" size="35" autofocus required>
+				<input type="submit" value="Submit">
+			</form>
+		</div>
+		<div class="results">
+			<div class="p-image"></div>
+			<div class="p-synopsis"></div>
+		</div>
+	</div>
+	<div class="templates hidden">
+		<dl class="result projects">
+			<dt></dt>
+				<dd class="p-image"><a href="" target="_blank"></a></dd>
+			<dt></dt>
+				<dd class="p-title"><a href="" target="_blank"></a></dd>
+			<dt>Learn more</dt>
+				<dd class="p-full"></dd>
+			<dt>Fund!</dt>
+				<dd class="donate"></dd>
+		</dl>
+	</div>
+</body>
+</html>
