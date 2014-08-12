@@ -73,14 +73,14 @@
 			$('.results').html('');
 	      currentIndex += 12;  //increment index to load more projects
 			getProjects(tags, currentIndex);
-	}
+	};
 
 	function loadPrevious() {
 		$('.footer-nav').hide();
 		$('.results').html('');
 	    currentIndex -= 12;  //decrement index to load previous projects
 			getProjects(tags, currentIndex);
-		}
+	};
 
 	function initSpinner () {
 	var opts = {
@@ -107,9 +107,17 @@
 		spinner.stop();
 	};
 
+	function loadInitial() {
+		max = 3;
+		tags = "civics";
+		getProjects(tags);
+	};
+
 	$(document).ready(function() {
 
 		initSpinner();
+
+		getProjects("civics");
 		
 		$('.search-img').on('click', function(event) {
 			// zero out results if previous search has run

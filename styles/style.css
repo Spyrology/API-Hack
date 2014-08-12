@@ -22,12 +22,12 @@ h1 {
 	font-size: 28px;
 	font-family: 'Crafty Girls', cursive;
 	font-weight: bold;
-	margin-bottom: 50px;
+	margin-bottom: 40px;
 }
 
 .search {
 	position: relative;
-	width: 800px;
+	width: 860px;
 	height: 220px;
 	top: 40px;
 	margin: 0 auto;
@@ -70,11 +70,12 @@ h1 {
 .img-title h5 {
 	position: absolute;
 	top: 38%;
- color: black;
- width: 100%;
- font-family:'Crafty Girls', cursive;
+ 	color: black;
+ 	width: 100%;
+ 	font-family:'Crafty Girls', cursive;
 	font-weight: bold;
 	color: black;
+	font-size: .9em;
 }
 
 .result {
@@ -96,8 +97,8 @@ h1 {
 	min-height: 283px;
 	vertical-align: top;
 	text-align: left;
-	font-family:'Crafty Girls', cursive;
-	font-size: 14px;
+	font-family:'Source Sans Pro', sans-serif;
+	font-size: .9em;
 }
 
 .footer-nav {
