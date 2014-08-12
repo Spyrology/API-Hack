@@ -117,7 +117,7 @@
 
 		initSpinner();
 
-		getProjects("civics");
+		getProjects("tech");
 		
 		$('.search-img').on('click', function(event) {
 			// zero out results if previous search has run
