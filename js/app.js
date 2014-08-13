@@ -4,6 +4,8 @@
 	var spinner;
 	var currentIndex = 0;
 	var target;
+	var $scrollButtonUp;
+	var $window;
 
 	var showProjects = function(projects) {
 		
@@ -57,29 +59,24 @@
 					var projects = showProjects(item);
 					$('.results').append(projects);
 				});
+
 			$('.footer-nav').show();
-			$('#load-more').show();
-			if (currentIndex >= 12) {
-				$('#load-previous').show();
-			}
-			else {
-				$('#load-previous').hide();
-			};
+
 		});
 	};
 
 	function loadMore() {
-			$('.footer-nav').hide();
-			$('.results').html('');
-	      currentIndex += 12;  //increment index to load more projects
-			getProjects(tags, currentIndex);
-	};
 
-	function loadPrevious() {
-		$('.footer-nav').hide();
-		$('.results').html('');
-	    currentIndex -= 12;  //decrement index to load previous projects
-			getProjects(tags, currentIndex);
+		$window = $(window);
+		$scrollButtonUp = $('#scroll-top');
+
+		$(window).scroll(function(){
+			if($(document).height()==$(window).scrollTop()+$(window).height()){
+				$scrollButtonUp.show();
+	    		currentIndex += 12;  //increment index to load more projects
+				getProjects(tags, currentIndex);
+			}
+		});
 	};
 
 	function initSpinner () {
@@ -107,17 +104,43 @@
 		spinner.stop();
 	};
 
+	function smoothScroll() {
+		//Smooth scrolling for anchor links
+		var $root = $('html, body'); //cached selector for increased performance
+		$('a').click(function(){
+			$root.animate({
+				scrollTop: $( $.attr(this, 'href') ).offset().top
+				}, 1000);
+
+			return false;
+		});
+	};
+
 	function loadInitial() {
-		max = 3;
-		tags = "civics";
-		getProjects(tags);
+		getProjects("tech");
+	};
+
+	function toggleScrollButton() {
+		$window.scroll(function(){
+			if ($window.scrollTop()==0) {
+				$scrollButtonUp.hide();
+			}
+		});
+	};
+
+	function loadPageTop() {
+		window.onload = function() {
+ 			setTimeout (function () {
+  				scrollTo(0,0);
+ 			}, 0);
+		};
 	};
 
 	$(document).ready(function() {
 
 		initSpinner();
 
-		getProjects("tech");
+		loadInitial();
 		
 		$('.search-img').on('click', function(event) {
 			// zero out results if previous search has run
@@ -130,14 +153,15 @@
 			tags = ($(this).find('img').attr('id'));
 			getProjects(tags);
 		});
+           		
+        loadMore();
 
-		$('#load-more').click(function(){
-			loadMore();
-		});
+    	smoothScroll();
 
-		$('#load-previous').click(function(){
-			loadPrevious();
-		});
+    	toggleScrollButton();
+
+    	loadPageTop();
 
 	});
+
 }());
