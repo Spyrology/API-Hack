@@ -101,6 +101,10 @@ h1 {
 	font-size: .9em;
 }
 
+.result:hover {
+	opacity: .5;
+}
+
 .footer-nav {
 	position: relative;
 	margin-top: 20px;
